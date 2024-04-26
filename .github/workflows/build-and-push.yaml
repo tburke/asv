@@ -2,7 +2,7 @@ name: Build and push main to latest
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
