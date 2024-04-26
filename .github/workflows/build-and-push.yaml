@@ -19,7 +19,8 @@ jobs:
         name: Get a tag
         id: get_tag
         run: |
-          eval set - "${"$(git describe)"//-/ }"
+          NEWTAG=$(git describe)
+          eval set - "${NEWTAG//-/ }"
           echo "GIT_TAG=$(printf "%s-%03d-%s" $@)" >> $GITHUB_OUTPUT
       -
         name: Image digest
