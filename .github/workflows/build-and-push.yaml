@@ -1,0 +1,25 @@
+name: Build and push main to latest
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      -
+        name: Get a tag
+        id: get_tag
+        run: echo "GIT_TAG=$(git describe)" >> $GITHUB_OUTPUT
+      -
+        name: Image digest
+        run: echo chuck:${{ steps.get_tag.outputs.GIT_TAG }}
+
+
