@@ -23,6 +23,9 @@ jobs:
           eval set - "${NEWTAG//-/ }"
           echo "GIT_TAG=$(printf "%s-%03d-%s" $@)" >> $GITHUB_OUTPUT
       -
+        name: Show github sha
+        run: echo $GITHUB_SHA
+      -
         name: Image digest
         run: echo chuck:${{ steps.get_tag.outputs.GIT_TAG }}
 
